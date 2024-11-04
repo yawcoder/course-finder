@@ -6,11 +6,16 @@ import { subjects } from "@/assets/Subjects"
 import SubjectList from "./SubjectList"
 import ClosableTag from "./ClosableTag"
 
-export default function Search() {
+type SearchProps = {
+    selectedSubjects: string[];
+    setSelectedSubjects: (subject: string[]) => void;
+    handleSubmit: (event: any) => void;
+}
+
+export default function Search({ selectedSubjects, setSelectedSubjects, handleSubmit }: SearchProps) {
 
     const [formInput, setFormInput] = useState("");
     const [suggestions, setSuggestions] = useState<string[]>([])
-    const [selectedSubjects, setSelectedSubjects] = useState<string[]>([])
 
 
     function handleInputChange(e: any) {
@@ -31,10 +36,12 @@ export default function Search() {
     function handleSuggestionClick(suggestion: any) {
         if(selectedSubjects.length < 4){
             setSelectedSubjects([...selectedSubjects, suggestion]);
-            setFormInput("");
+            setFormInput("");   
             setSuggestions([]);
         } else {
             alert("You can only choose 4 subjects")
+            setFormInput("");
+            setSuggestions([]);
         }
     }
 
@@ -43,10 +50,6 @@ export default function Search() {
             return e !== subject;
         })
         setSelectedSubjects(newSelectedSubjects);
-    }
-
-    function handleSubmit(e: any) {
-        e.preventDefault();
     }
 
     return (
