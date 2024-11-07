@@ -56,7 +56,7 @@ export default function Search({ selectedSubjects, setSelectedSubjects, handleSu
         <div className="w-2/5">
             <form onSubmit={handleSubmit}>
                 <Field label="">
-                    <Input placeholder="Enter your electives" onChange={handleInputChange} value={formInput} />
+                    <Input placeholder="Enter your electives" onChange={handleInputChange} value={formInput} className="outline-none border-2 py-5 px-2"/>
                     <ClosableTag selectedSubjects={selectedSubjects} handleClose={handleClose}/>
                 </Field>
                 {
@@ -64,7 +64,7 @@ export default function Search({ selectedSubjects, setSelectedSubjects, handleSu
                         <SubjectList suggestions={suggestions} handleSuggestionClick={handleSuggestionClick} />
                     )
                 }
-                <Button size="xl" type="submit">Find Courses</Button>
+                <Button size="xl" type="submit" className="bg-blue-800 p-5 text-white font-bold mt-10 hover:bg-yellow-500">Find Courses</Button>
             </form>
         </div>
     )
