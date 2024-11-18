@@ -29,7 +29,7 @@ export default function App() {
   }
 
   return (
-    <div className="w-full flex flex-col justify-center items-center pt-24">
+    <div className="w-full flex flex-col justify-center items-center pt-16">
       <Search selectedSubjects={selectedSubjects} setSelectedSubjects={setSelectedSubjects} handleSubmit={handleSubmit} />
       <Programmes programmes={programmes} />
     </div>
