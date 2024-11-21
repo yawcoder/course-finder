@@ -10,7 +10,7 @@ export default function SubjectList({suggestions, handleSuggestionClick}: Subjec
             {
                 suggestions.map((suggestion, index) => {
                     return (
-                        <li key={index} onClick={() => {handleSuggestionClick(suggestion)}} className="cursor-pointer">
+                        <li key={index} onClick={() => {handleSuggestionClick(suggestion)}} className="cursor-pointer hover:bg-blue-800 hover:text-white">
                             {suggestion}
                         </li>
                     )

@@ -10,9 +10,10 @@ type SearchProps = {
     selectedSubjects: string[];
     setSelectedSubjects: (subject: string[]) => void;
     handleSubmit: (event: any) => void;
+    setAlertMessage: (event: any) => void;
 }
 
-export default function Search({ selectedSubjects, setSelectedSubjects, handleSubmit }: SearchProps) {
+export default function Search({ selectedSubjects, setSelectedSubjects, handleSubmit, setAlertMessage }: SearchProps) {
 
     const [formInput, setFormInput] = useState("");
     const [suggestions, setSuggestions] = useState<string[]>([])
@@ -24,7 +25,7 @@ export default function Search({ selectedSubjects, setSelectedSubjects, handleSu
 
         if (input) {
             const filteredSuggestions = subjects.filter((subject) => {
-                return subject.includes(input);
+                return subject.includes(input.toLowerCase());
             })
             setSuggestions(filteredSuggestions);
             // console.log(suggestions);
@@ -39,7 +40,7 @@ export default function Search({ selectedSubjects, setSelectedSubjects, handleSu
             setFormInput("");   
             setSuggestions([]);
         } else {
-            alert("You can only choose 4 subjects")
+            setAlertMessage("You can only choose 4 subjects")
             setFormInput("");
             setSuggestions([]);
         }
